@@ -1,0 +1,5 @@
+1) How would you rate (1-10) the difficulty level of the test (1 = really easy, 10 = impossible)?
+
+2) Was the timit limit (7,5 hours) ok or too strict?
+
+3) Other feedback about the test?

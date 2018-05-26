@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Admin tools</title>
+    <script src="../lib/jquery.js" type="application/javascript"></script>
+    <script src="../lib/bacon.js" type="application/javascript"></script>
+    <script src="../lib/bacon.model.js" type="application/javascript"></script>
+    <script src="../lib/bacon.jquery.js" type="application/javascript"></script>
+    <script src="//builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v2.0.0.js" type="application/javascript"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.3.0/css/bootstrap.min.css">
+    <style>
+        h1 {
+            margin-top: 25px;
+        }
+        h2 {
+            margin-top: 25px;
+            margin-left: 25px;
+            margin-bottom: 25px;
+        }
+        [class*="col-"] {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            background-color: #eee;
+            background-color: rgba(86,61,124,.15);
+            border: 1px solid rgba(86,61,124,.2);
+        }
+    </style>
+    <script type="text/javascript">
+        Handlebars.registerHelper('orderItemList', function(items, options) {
+            var out = "";
+            for(var i=0, l=items.length; i<l; i++) {
+                out = out + options.fn(items[i]);
+            }
+            return out;
+        });
+
+        var results = Bacon.$.ajax("/api/orders");
+        results.onValue(printOrders);
+
+        function printOrders(orders) {
+            var ordersTemplate = Handlebars.compile($("#order-template").html());
+            orders.forEach(function(order) {
+                var html = ordersTemplate(order);
+                $("#orderList").append(html)
+            })
+        }
+
+    </script>
+    <script id="order-template" type="text/x-handlebars-template">
+        <div class="orderRow" id="order-id-{{orderId}}">
+            <div class="col-md-10"><h5>OrderId: {{orderId}}</h5> <h5>CustomerId: {{customer.customerId}}</h5> <h5>Name</h5> {{customer.companyName}} <h5>Address:</h5> {{customer.street}} {{customer.postalCode}} {{customer.city}} {{customer.country}}</div>
+            {{#orderItemList orderLines}}
+                <div class="col-md-10">
+                    <div id="order-line-id-{{orderLineId}}-pid" class="col-md-4">ProductId: {{productId}}</div>
+                    <div id="order-line-id-{{orderLineId}}-pname" class="col-md-4">ProductName: {{productName}}</div>
+                    <div id="order-line-id-{{orderLineId}}-amount" class="col-md-4">Amount: {{quantity}}</div>
+                </div>
+            {{/orderItemList}}
+        </div>
+        <div class="col-md-10" style="background-color: #ffffff"></div>
+    </script>
+</head>
+<body>
+<div class="container" id="orderList">
+    <h1>Admin tool</h1>
+    <h2>Order listing</h2>
+
+</div>
+
+</body>
+</html>
