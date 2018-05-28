@@ -25,7 +25,7 @@ and an action for submitting the order
 - Any IDE that supports JDK 8
 
 
-[1]: https://github.com/SolangeUG/conference-central/blob/master/LICENSE
+[1]: https://github.com/SolangeUG/elisa-endtoend/blob/master/LICENSE
 [2]: http://java.com/en/
 [3]: https://www.javascript.com/
 [4]: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
