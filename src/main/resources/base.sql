@@ -1,6 +1,6 @@
 
 CREATE TABLE customer (
-  customer_id number(10) not null,
+  customer_id number(10) not null AUTO_INCREMENT,
   company_name varchar2(50) not null,
   street varchar2(50) not null,
   postal_code varchar2(5) not null,
