@@ -2,6 +2,7 @@ package elisa.devtest.endtoend.service;
 
 import elisa.devtest.endtoend.dao.OrderDao;
 import elisa.devtest.endtoend.exception.OrderProcessingException;
+import elisa.devtest.endtoend.model.Customer;
 import elisa.devtest.endtoend.model.Order;
 import elisa.devtest.endtoend.util.Messages;
 import org.springframework.dao.DataAccessException;
@@ -15,6 +16,7 @@ import java.util.List;
 public class OrderService {
 
     private OrderDao orderDao = new OrderDao();
+    private CustomerService customerService = new CustomerService();
 
     /**
      * Default no-argument constructor
@@ -37,6 +39,19 @@ public class OrderService {
      */
     public Order saveOrder(Order order) throws OrderProcessingException {
         try {
+
+            // make sure order has valid customer information
+            if (order.getCustomer().getCustomerId() <= 0) {
+
+                // first, look for customer with corresponding company name
+                Customer customer = customerService.getCustomer(order.getCustomer().getCompanyName());
+                if (customer.getCustomerId() <= 0) {
+                    // create customer when not found
+                    customer = customerService.saveCustomer(order.getCustomer());
+                }
+                order.setCustomer(customer);
+            }
+
             long result = orderDao.save(order);
             return orderDao.find(result);
         } catch (DataAccessException exception) {
