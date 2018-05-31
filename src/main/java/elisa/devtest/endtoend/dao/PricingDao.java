@@ -11,7 +11,9 @@ import java.util.List;
 public class PricingDao {
     public List<PriceDto> findPrices() {
         JdbcTemplate template = new JdbcTemplate(DBConnection.getDataSource());
-        return template.query("select pricing_group, price_json from pricing_dump where pricing_group = ?", new Object[] {"PHONES"}, new PriceDtoMapper());
+        return template.query("select pricing_group, price_json from pricing_dump where pricing_group = ?",
+                                new Object[] {"PHONES"}, new
+                                PriceDtoMapper());
     }
 
     private class PriceDtoMapper implements RowMapper<PriceDto> {

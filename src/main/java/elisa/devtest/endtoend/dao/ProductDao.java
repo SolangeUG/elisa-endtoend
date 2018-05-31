@@ -11,7 +11,9 @@ import java.util.List;
 public class ProductDao {
     public List<ProductDto> findProducts() {
         JdbcTemplate template = new JdbcTemplate(DBConnection.getDataSource());
-        return template.query("select product_group, product_json from product_dump where product_group = ?", new Object[] {"PHONES"}, new ProductDtoMapper());
+        return template.query("select product_group, product_json from product_dump where product_group = ?",
+                                new Object[] {"PHONES"},
+                                new ProductDtoMapper());
     }
 
     private class ProductDtoMapper implements RowMapper<ProductDto> {
