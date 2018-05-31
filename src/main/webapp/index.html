@@ -1,17 +1,70 @@
 <!DOCTYPE HTML>
-<html>
-<head>
-    <meta charset="utf-8"/>
-    <title>Shops</title>
-    <script src="../lib/jquery.js" type="application/javascript"></script>
-    <script src="../lib/bacon.js" type="application/javascript"></script>
-    <script src="../lib/bacon.model.js" type="application/javascript"></script>
-    <script src="../lib/bacon.jquery.js" type="application/javascript"></script>
-    <script src="//builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v2.0.0.js" type="application/javascript"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.3.0/css/bootstrap.min.css">
+<html ng-app="productOrderingApp">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Shops</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- scripts -->
+        <script src="../lib/jquery.js" type="application/javascript"></script>
+        <script src="../lib/bacon.js" type="application/javascript"></script>
+        <script src="../lib/bacon.model.js" type="application/javascript"></script>
+        <script src="../lib/bacon.jquery.js" type="application/javascript"></script>
+        <script src="//builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v2.0.0.js" type="application/javascript"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
 
-</head>
-<body>
-    Skeleton
-</body>
+        <!-- controllers -->
+        <script src="./controllers/ProductsController.js"></script>
+        <script src="./controllers/OrdersController.js"></script>
+
+        <!-- stylesheets -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    </head>
+    <body>
+        <!-- header element with navigation -->
+        <header>
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="active">
+                                <a href="#">Shop<span class="sr-only">(current)</span></a>
+                            </li>
+                            <li><a href="/admin/">Admin</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Shop main page -->
+        <main class="container-fluid" ng-controller="ProductsController as productCtrl">
+            <!-- list of products -->
+            <div class="panel panel-default">
+                <div class="panel-heading">Products</div>
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="product in productCtrl.products">
+                            <td>
+                                <input type="checkbox" value="product.id" ng-model="product.selected"/>
+                                &nbsp;
+                            </td>
+                            <td>{{product.name}}</td>
+                            <td>{{product.description}}</td>
+                            <td>{{product.price}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </body>
 </html>
