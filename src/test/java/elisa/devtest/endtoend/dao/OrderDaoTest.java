@@ -22,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class OrderDaoTest {
 
     private OrderDao orderDao = new OrderDao();
+    private CustomerDao customerDao = new CustomerDao();
 
     @BeforeAll
     static void setUp() {
@@ -45,7 +46,7 @@ class OrderDaoTest {
         assertNotNull(order);
         long id = order.getCustomer().getCustomerId();
 
-        Customer customer = orderDao.findCustomer(id);
+        Customer customer = customerDao.find(id);
         assertNotNull(customer);
         assertEquals(id, customer.getCustomerId());
     }
@@ -53,7 +54,7 @@ class OrderDaoTest {
     @Test
     @DisplayName("save a valid order for example customer")
     void shouldSaveOrderForCustomer() {
-        Customer customer = orderDao.findCustomer(1L);
+        Customer customer = customerDao.find(1L);
         List<OrderLine> lines = new ArrayList<>();
 
         Order order = new Order(customer, lines);
@@ -64,7 +65,7 @@ class OrderDaoTest {
     @Test
     @DisplayName("should successfully save order with order lines")
     void shouldCreateOrderLinesForOrder() {
-        Customer customer = orderDao.findCustomer(1L);
+        Customer customer = customerDao.find(1L);
         OrderLine line1 = new OrderLine(1, "Nokia Lumia 1020", 4);
         OrderLine line2 = new OrderLine(2, "Nokia Lumia 1520", 2);
         List<OrderLine> lines = Arrays.asList(line1, line2);
