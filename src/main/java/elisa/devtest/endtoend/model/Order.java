@@ -15,6 +15,22 @@ public class Order {
         this.orderLines = orderLines;
     }
 
+    /**
+     * Constructor
+     * @param customer customer placing the order
+     * @param orderLines list of order lines for this order
+     */
+    public Order(Customer customer, List<OrderLine> orderLines) {
+        this.customer = customer;
+        this.orderLines = orderLines;
+    }
+
+    /**
+     * Default constructor
+     */
+    public Order() {
+    }
+
     public long getOrderId() {
         return orderId;
     }

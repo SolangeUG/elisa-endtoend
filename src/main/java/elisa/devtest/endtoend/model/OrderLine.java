@@ -14,6 +14,18 @@ public class OrderLine {
         this.quantity = quantity;
     }
 
+    /**
+     * Constructor
+     * @param productId product id for this order line
+     * @param productName product name for this order line
+     * @param quantity product quantity
+     */
+    public OrderLine(long productId, String productName, int quantity) {
+        this.productId = productId;
+        this.productName = productName;
+        this.quantity = quantity;
+    }
+
     public long getOrderLineId() {
         return orderLineId;
     }
