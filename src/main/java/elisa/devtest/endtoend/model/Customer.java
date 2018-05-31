@@ -20,6 +20,22 @@ public class Customer {
     public Customer() {
     }
 
+    /**
+     * Constructor
+     * @param companyName company name
+     * @param street street name
+     * @param postalCode postal code
+     * @param city city name
+     * @param country name of country
+     */
+    public Customer(String companyName, String street, String postalCode, String city, String country) {
+        this.companyName = companyName;
+        this.street = street;
+        this.postalCode = postalCode;
+        this.city = city;
+        this.country = country;
+    }
+
     public long getCustomerId() {
         return customerId;
     }
