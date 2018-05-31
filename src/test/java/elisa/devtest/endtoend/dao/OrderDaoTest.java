@@ -7,6 +7,7 @@ import elisa.devtest.endtoend.model.OrderLine;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.dao.DataAccessException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -63,7 +64,7 @@ class OrderDaoTest {
     }
 
     @Test
-    @DisplayName("should successfully save order with order lines")
+    @DisplayName("successfully save order with order lines")
     void shouldCreateOrderLinesForOrder() {
         Customer customer = customerDao.find(1L);
         OrderLine line1 = new OrderLine(1, "Nokia Lumia 1020", 4);
@@ -78,5 +79,15 @@ class OrderDaoTest {
         assertNotNull(savedOrder);
         assertNotNull(savedOrder.getOrderLines());
         assertEquals(2, savedOrder.getOrderLines().size());
+    }
+
+    @Test
+    @DisplayName("raise a data access exception on non provided required customer information")
+    void shouldRaiseExceptionOnIncompleteCustomerData() {
+        Customer customer = new Customer();
+        List<OrderLine> orderLines = new ArrayList<>();
+        final Order order = new Order(customer, orderLines);
+        assertThrows(DataAccessException.class,
+                    () -> orderDao.save(order));
     }
 }
