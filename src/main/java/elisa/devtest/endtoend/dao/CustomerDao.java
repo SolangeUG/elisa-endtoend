@@ -1,17 +1,22 @@
 package elisa.devtest.endtoend.dao;
 
 import elisa.devtest.endtoend.model.Customer;
+import elisa.devtest.endtoend.util.Messages;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import java.sql.PreparedStatement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Customer Data Access Object
  * @author Solange U. Gasengayire
  */
 public class CustomerDao {
+
+    private static final Logger LOGGER = Logger.getLogger(CustomerDao.class.getName());
 
     /**
      * Return a customer with the given id
@@ -31,6 +36,7 @@ public class CustomerDao {
                                     resultSet.getString("country"))
                     );
         } catch (Exception e) {
+            LOGGER.log(Level.SEVERE, Messages.CUSTOMER_RETRIEVING_BY_ID_EXCEPTION, e);
             e.printStackTrace();
         }
         return new Customer();
@@ -54,6 +60,7 @@ public class CustomerDao {
                                     resultSet.getString("country"))
                     );
         } catch (Exception e) {
+            LOGGER.log(Level.SEVERE, Messages.CUSTOMER_RETRIEVING_BY_COMPANY_NAME_EXCEPTION, e);
             e.printStackTrace();
         }
         return new Customer();
@@ -83,6 +90,7 @@ public class CustomerDao {
                     }, keyHolder);
             return keyHolder.getKey().longValue();
         } catch (Exception e) {
+            LOGGER.log(Level.SEVERE, Messages.CUSTOMER_SAVING_EXCEPTION, e);
             e.printStackTrace();
         }
         return 0;
