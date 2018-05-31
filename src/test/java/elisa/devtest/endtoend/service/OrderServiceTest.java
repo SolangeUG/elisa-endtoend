@@ -37,7 +37,7 @@ class OrderServiceTest {
 
     @Test
     @DisplayName("invoke OrderDAO::save method")
-    void shouldInvokeSaveMethodOfOrderDao() {
+    void shouldInvokeOrderDaoSaveMethod() {
         assertNotNull(mockOrderDao);
         assertNotNull(service);
 
