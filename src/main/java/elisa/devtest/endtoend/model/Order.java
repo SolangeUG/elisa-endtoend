@@ -42,4 +42,12 @@ public class Order {
     public List<OrderLine> getOrderLines() {
         return orderLines;
     }
+
+    /**
+     * Set customer
+     * @param customer customer
+     */
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 }
