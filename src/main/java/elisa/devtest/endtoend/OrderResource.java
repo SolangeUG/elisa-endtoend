@@ -4,7 +4,6 @@ import elisa.devtest.endtoend.exception.OrderProcessingException;
 import elisa.devtest.endtoend.model.Order;
 import elisa.devtest.endtoend.service.OrderService;
 
-import javax.validation.constraints.NotNull;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -24,7 +23,8 @@ public class OrderResource {
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Order createOrder(@NotNull Order order) throws ServerErrorException  {
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Order createOrder(Order order) throws ServerErrorException  {
         try {
             return orderService.saveOrder(order);
         } catch (OrderProcessingException exception) {
