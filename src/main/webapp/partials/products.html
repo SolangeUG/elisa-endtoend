@@ -29,13 +29,12 @@
                 <td>
                     <input type="checkbox" value="product" ng-model="product.selected"
                            ng-click="updateSelection(product)"/>
-                    &nbsp;
                 </td>
                 <td>{{product.name}}</td>
                 <td>{{product.description}}</td>
                 <td>{{product.price.recurringPrice | currency}}</td>
                 <td>
-                    <input class="form-control quantity" type="number" min="1" maxlength="2"
+                    <input class="form-control table-quantity" type="number" min="1" maxlength="2"
                            ng-model="product.quantity"/>
                 </td>
             </tr>
