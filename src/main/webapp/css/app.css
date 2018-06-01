@@ -1,0 +1,24 @@
+body {
+    padding-top: 80px;
+}
+
+.table {
+    padding: 4px;
+}
+
+.quantity {
+    width: 80px;
+}
+
+.form-control {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+#customerFormHeader {
+    margin-bottom: 8px;
+}
+
+#submitOrder {
+    margin-left: 4px;
+}
