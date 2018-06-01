@@ -73,8 +73,7 @@ angular.module('ShopApp.controllers')
             appService.createOrder($scope.order)
                 .then(
                     function(response) {
-                        //$location.path("/confirmation");
-                        $scope.reset();
+                        $location.path("/confirmation");
                     },
                     function(error) {
                         $scope.error.value = true;
