@@ -1,0 +1,79 @@
+<!-- Order confirmation page -->
+<main role="main" class="container" ng-controller="ConfirmationController" ng-init="getOrderedProducts()">
+
+    <!-- alert when an order has been successful created -->
+    <div class="alert alert-success alert-dismissible" role="alert" ng-show="confirmation.value">
+        Your order was successfully created!
+    </div>
+
+    <!-- list of selected products -->
+    <div class="panel panel-info">
+        <div class="panel-heading"><strong>Ordered products</strong></div>
+
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price/Unit</th>
+                <th>Total Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="product in orderedProducts">
+                <td>{{product.productName}}</td>
+                <td>{{product.quantity}}</td>
+                <td>{{product.unitPrice | currency}}</td>
+                <td>{{product.price | currency}}</td>
+            </tr>
+            <tr>
+                <td><span> </span></td>
+                <td><span> </span></td>
+                <td><strong>TOTAL</strong></td>
+                <td><strong>{{totalPrice | currency}}</strong></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Customer information -->
+    <div class="panel panel-info">
+        <div class="panel-heading">Customer Information</div>
+        <div class="panel-body">
+            <div class="row">
+                <label class="col-sm-2 control-label text-right">Company name</label>
+                <div class="col-sm-10">
+                    <span ng-model="customer.companyName">{{customer.companyName}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2 control-label text-right">Street</label>
+                <div class="col-sm-10">
+                    <span ng-model="customer.street">{{customer.street}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2 control-label text-right">Postal Code</label>
+                <div class="col-sm-10">
+                    <span ng-model="customer.postalCode">{{customer.postalCode}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2 control-label text-right">City</label>
+                <div class="col-sm-10">
+                    <span ng-model="customer.city">{{customer.city}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2 control-label text-right">Country</label>
+                <div class="col-sm-10">
+                    <span ng-model="customer.country">{{customer.country}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <a href="#!/" class="btn btn-primary">Home</a>
+    </div>
+</main>
