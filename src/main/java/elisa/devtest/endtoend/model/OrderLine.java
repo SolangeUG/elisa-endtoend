@@ -3,11 +3,16 @@ package elisa.devtest.endtoend.model;
 
 public class OrderLine {
     private long orderLineId;
-    private long productId;
+    private String productId;
     private String productName;
     private int quantity;
 
-    public OrderLine(long orderLineId, long productId, String productName, int quantity) {
+    /**
+     * Default no-argument constructor for json serialization framework
+     */
+    public OrderLine() {}
+
+    public OrderLine(long orderLineId, String productId, String productName, int quantity) {
         this.orderLineId = orderLineId;
         this.productId = productId;
         this.productName = productName;
@@ -20,7 +25,7 @@ public class OrderLine {
      * @param productName product name for this order line
      * @param quantity product quantity
      */
-    public OrderLine(long productId, String productName, int quantity) {
+    public OrderLine(String productId, String productName, int quantity) {
         this.productId = productId;
         this.productName = productName;
         this.quantity = quantity;
@@ -30,7 +35,7 @@ public class OrderLine {
         return orderLineId;
     }
 
-    public long getProductId() {
+    public String getProductId() {
         return productId;
     }
 

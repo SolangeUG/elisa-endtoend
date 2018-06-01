@@ -36,7 +36,7 @@ public class OrderDao {
                     .query("select * from order_line where order_id = ?",
                             new Object[]{orderId},
                             (resultSet, rowNumber) -> new OrderLine(resultSet.getLong("order_line_id"),
-                                                                    resultSet.getLong("product_id"),
+                                                                    resultSet.getString("product_id"),
                                                                     resultSet.getString("product_name"),
                                                                     resultSet.getInt("quantity"))
                     );
@@ -101,7 +101,7 @@ public class OrderDao {
                         @Override
                         public void setValues(PreparedStatement preparedStatement, int i) throws SQLException {
                             preparedStatement.setLong(1, orderId);
-                            preparedStatement.setLong(2, lines.get(i).getProductId());
+                            preparedStatement.setString(2, lines.get(i).getProductId());
                             preparedStatement.setString(3, lines.get(i).getProductName());
                             preparedStatement.setLong(4, lines.get(i).getQuantity());
                         }

@@ -67,8 +67,8 @@ class OrderDaoTest {
     @DisplayName("successfully save order with order lines")
     void shouldCreateOrderLinesForOrder() {
         Customer customer = customerDao.find(1L);
-        OrderLine line1 = new OrderLine(1, "Nokia Lumia 1020", 4);
-        OrderLine line2 = new OrderLine(2, "Nokia Lumia 1520", 2);
+        OrderLine line1 = new OrderLine("1L", "Nokia Lumia 1020", 4);
+        OrderLine line2 = new OrderLine("2L", "Nokia Lumia 1520", 2);
         List<OrderLine> lines = Arrays.asList(line1, line2);
 
         Order order = new Order(customer, lines);
