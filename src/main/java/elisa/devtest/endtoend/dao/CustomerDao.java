@@ -36,8 +36,7 @@ public class CustomerDao {
                                     resultSet.getString("country"))
                     );
         } catch (Exception e) {
-            LOGGER.log(Level.SEVERE, Messages.CUSTOMER_RETRIEVING_BY_ID_EXCEPTION, e);
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, Messages.CUSTOMER_RETRIEVING_BY_ID_EXCEPTION);
         }
         return new Customer();
     }
@@ -60,8 +59,7 @@ public class CustomerDao {
                                     resultSet.getString("country"))
                     );
         } catch (Exception e) {
-            LOGGER.log(Level.SEVERE, Messages.CUSTOMER_RETRIEVING_BY_COMPANY_NAME_EXCEPTION, e);
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, Messages.CUSTOMER_RETRIEVING_BY_COMPANY_NAME_EXCEPTION);
         }
         return new Customer();
     }
@@ -90,8 +88,7 @@ public class CustomerDao {
                     }, keyHolder);
             return keyHolder.getKey().longValue();
         } catch (Exception e) {
-            LOGGER.log(Level.SEVERE, Messages.CUSTOMER_SAVING_EXCEPTION, e);
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, Messages.CUSTOMER_SAVING_EXCEPTION);
         }
         return 0;
     }
