@@ -18,6 +18,10 @@ angular.module('ShopApp', [
             templateUrl: "partials/orders.html",
             controller: "OrdersController"
         })
+        .when('/confirmation', {
+            templateUrl: "partials/confirmation.html",
+            controller: "ConfirmationController"
+        })
         .otherwise({
             redirectTo: '/'
         });

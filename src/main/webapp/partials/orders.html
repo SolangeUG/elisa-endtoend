@@ -103,9 +103,9 @@
         </div>
         <div class="panel-footer">
             <a href="/" class="btn btn-danger" ng-click="reset()">Cancel</a>
-            <button id="submitOrder" class="btn btn-primary" type="submit" ng-click="postOrder()"
+            <button id="submitOrder" class="btn btn-primary" type="submit" ng-click="postOrder();customerForm.$setPristine();"
                     ng-disabled="customerForm.$invalid || orderLines.length === 0">
-                Order
+                <a id="confirmOrder" href="#!/confirmation">Order</a>
             </button>
         </div>
     </div>
