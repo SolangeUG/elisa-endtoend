@@ -1,0 +1,113 @@
+<!-- Shop orders page -->
+<main class="container" ng-controller="OrdersController" ng-init="getOrderLines()">
+
+    <!-- alert in case of an error from the backend -->
+    <div class="alert alert-danger alert-dismissible" role="alert" ng-show="error.value">
+        Error processing your order.
+        <div class="text-danger">{{error.message}}</div>
+    </div>
+
+    <!-- list of selected products -->
+    <div class="panel panel-info">
+        <div class="panel-heading"><strong>Selected products</strong></div>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price/Unit</th>
+                    <th>Total Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="orderLine in orderLines">
+                    <td>{{orderLine.productName}}</td>
+                    <td>{{orderLine.quantity}}</td>
+                    <td>{{orderLine.unitPrice | currency}}</td>
+                    <td>{{orderLine.price | currency}}</td>
+                </tr>
+                <tr>
+                    <td><span> </span></td>
+                    <td><span> </span></td>
+                    <td><strong>TOTAL</strong></td>
+                    <td><strong>{{totalPrice | currency}}</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Customer information -->
+    <div class="panel panel-info">
+        <div class="panel-heading">Customer Form</div>
+        <div class="panel-body">
+            <div id="customerFormHeader">
+                Fill out the contact form below. All fields are required.
+            </div>
+            <form name="customerForm" class="form-horizontal">
+                <div class="control-group" ng-class="{error: customerForm.companyName.$invalid && !customerForm.companyName.$pristine}">
+                    <label class="col-sm-2 control-label">Company name</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" name="companyName" ng-model="customer.companyName" required>
+                        <span ng-show="customerForm.companyName.$error.required && !customerForm.companyName.$pristine"
+                              class="help-inline text-danger">
+                            Required
+                        </span>
+                    </div>
+                </div>
+
+                <div class="control-group" ng-class="{error: customerForm.site.$invalid && !customerForm.site.$pristine}">
+                    <label class="col-sm-2 control-label">Street</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" name="street" ng-model="customer.street" required>
+                        <span ng-show="customerForm.street.$error.required && !customerForm.street.$pristine"
+                              class="help-inline text-danger">
+                            Required
+                        </span>
+                    </div>
+                </div>
+
+                <div class="control-group" ng-class="{error: customerForm.postalCode.$invalid && !customerForm.postalCode.$pristine}">
+                    <label class="col-sm-2 control-label">Postal Code</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" name="postalCode" ng-model="customer.postalCode" required>
+                        <span ng-show="customerForm.postalCode.$error.required && !customerForm.postalCode.$pristine"
+                              class="help-inline text-danger">
+                            Required
+                    </span>
+                    </div>
+                </div>
+
+                <div class="control-group" ng-class="{error: customerForm.city.$invalid && !customerForm.city.$pristine}">
+                    <label class="col-sm-2 control-label">City</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" name="city" ng-model="customer.city" required>
+                        <span ng-show="customerForm.city.$error.required && !customerForm.city.$pristine"
+                              class="help-inline text-danger">
+                            Required
+                        </span>
+                    </div>
+                </div>
+
+                <div class="control-group" ng-class="{error: customerForm.country.$invalid && !customerForm.country.$pristine}">
+                    <label class="col-sm-2 control-label">Country</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" name="country" ng-model="customer.country" required>
+                        <span ng-show="customerForm.country.$error.required && !customerForm.country.$pristine"
+                              class="help-inline text-danger">
+                            Required
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="panel-footer">
+            <a href="/" class="btn btn-danger" ng-click="reset()">Cancel</a>
+            <button id="submitOrder" class="btn btn-primary" type="submit" ng-click="postOrder()"
+                    ng-disabled="customerForm.$invalid || orderLines.length === 0">
+                Order
+            </button>
+        </div>
+    </div>
+
+</main>

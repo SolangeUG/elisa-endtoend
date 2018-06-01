@@ -1,0 +1,50 @@
+<!-- Shop products page -->
+<main role="main" class="container" ng-controller="ProductsController" ng-init="getProducts()">
+
+    <!-- alert in case of an error from the backend -->
+    <div class="alert alert-danger alert-dismissible" role="alert" ng-show="error.value">
+        Error retrieving list of products. Please try again later.
+        <div class="text-danger" ng-model="error.message"></div>
+    </div>
+
+    <!-- list of products -->
+    <div class="panel panel-info">
+        <div class="panel-heading"><strong>Products</strong></div>
+        <div class="panel-body">
+            Select products and quantities to order in the list below.
+        </div>
+
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="product in products">
+                <td>
+                    <input type="checkbox" value="product" ng-model="product.selected"
+                           ng-click="updateSelection(product)"/>
+                    &nbsp;
+                </td>
+                <td>{{product.name}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.price.recurringPrice | currency}}</td>
+                <td>
+                    <input class="form-control quantity" type="number" min="1" maxlength="2"
+                           ng-model="product.quantity"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <a href="#!/order" class="btn btn-primary" ng-show="selected.value" ng-click="publishSelectedProducts()">
+            Order
+        </a>
+    </div>
+</main>
