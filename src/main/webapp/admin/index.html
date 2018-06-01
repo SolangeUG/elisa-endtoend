@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html ng-app="AdminApp">
     <head>
         <meta charset="utf-8"/>
         <title>Admin tools</title>
@@ -9,6 +9,15 @@
         <script src="../lib/bacon.jquery.js" type="application/javascript"></script>
         <script src="//builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v2.0.0.js" type="application/javascript"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.3.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/app.css">
+
+        <!-- AngularJS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+
+        <!-- AdminApp module and controller -->
+        <script src="/admin/AdminController.js"></script>
+
+        <!-- UNCOMMENT THIS SECTION FOR DEFAULT BEHAVIOR
         <style>
             h1 {
                 margin-top: 25px;
@@ -25,7 +34,11 @@
                 background-color: rgba(86,61,124,.15);
                 border: 1px solid rgba(86,61,124,.2);
             }
+            .orderRow {
+                margin-top: 20px;
+            }
         </style>
+
         <script type="text/javascript">
             Handlebars.registerHelper('orderItemList', function(items, options) {
                 var out = "";
@@ -51,8 +64,8 @@
                 <div class="col-md-10">
                     <h5>OrderId: {{orderId}}</h5>
                     <h5>CustomerId: {{customer.customerId}}</h5>
-                    <h5>Name</h5> {{customer.companyName}}
-                    <h5>Address:</h5> {{customer.street}} {{customer.postalCode}} {{customer.city}} {{customer.country}}
+                    <h5>Name: {{customer.companyName}}</h5>
+                    <h5>Address: {{customer.street}} {{customer.postalCode}} {{customer.city}} {{customer.country}}</h5>
                 </div>
                 {{#orderItemList orderLines}}
                     <div class="col-md-10">
@@ -64,13 +77,65 @@
             </div>
             <div class="col-md-10" style="background-color: #ffffff"></div>
         </script>
+        -->
     </head>
     <body>
-        <div class="container" id="orderList">
-            <h1>Admin tool</h1>
-            <h2>Order listing</h2>
+        <main class="container" ng-controller="AdminController" ng-init="getOrders()" id="orderList">
 
-        </div>
+            <!-- alert in case of an error from the backend -->
+            <div class="alert alert-danger alert-dismissible" role="alert" ng-show="error.value">
+                An error occurred.
+                <div class="text-danger">{{error.message}}</div>
+            </div>
 
+            <!-- alert in case there are no orders (yet) -->
+            <div class="alert alert-info alert-dismissible" role="alert" ng-show="orders.length == 0">
+                <strong>No orders found.</strong>
+            </div>
+
+            <!-- list of orders : COMMENT THIS SECTION FOR DEFAULT BEHAVIOR -->
+            <div class="panel panel-info" ng-repeat="order in orders">
+                <div class="panel-heading"><strong>Order ID: </strong>{{order.orderId}}</div>
+                <div class="panel-body">
+                    <div class="row">
+                        <label class="col-sm-2 control-label text-right">Customer ID</label>
+                        <div class="col-sm-10">
+                            <span>{{order.customer.customerId}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-2 control-label text-right">Company name</label>
+                        <div class="col-sm-10">
+                            <span>{{order.customer.companyName}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-2 control-label text-right">Address</label>
+                        <div class="col-sm-10">
+                            <div>{{order.customer.street}} {{order.customer.postalCode}}</div>
+                            <div>{{order.customer.city}} {{order.customer.country}}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Product Name</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="orderLine in order.orderLines">
+                            <td>{{orderLine.productId}}</td>
+                            <td>{{orderLine.productName}}</td>
+                            <td>{{orderLine.quantity}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </main>
     </body>
 </html>
