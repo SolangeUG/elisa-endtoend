@@ -32,7 +32,7 @@
                 </td>
                 <td>{{product.name}}</td>
                 <td>{{product.description}}</td>
-                <td>{{product.price.recurringPrice | currency}}</td>
+                <td>{{product.price.recurringPrice | currency:"€"}}</td>
                 <td>
                     <input class="form-control table-quantity" type="number" min="1" maxlength="2"
                            ng-model="product.quantity"/>

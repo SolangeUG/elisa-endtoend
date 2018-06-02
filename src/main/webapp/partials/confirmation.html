@@ -23,14 +23,14 @@
             <tr ng-repeat="product in orderedProducts">
                 <td>{{product.productName}}</td>
                 <td>{{product.quantity}}</td>
-                <td>{{product.unitPrice | currency}}</td>
-                <td>{{product.price | currency}}</td>
+                <td>{{product.unitPrice | currency:"€"}}</td>
+                <td>{{product.price | currency:"€"}}</td>
             </tr>
             <tr>
                 <td><span> </span></td>
                 <td><span> </span></td>
                 <td><strong>TOTAL</strong></td>
-                <td><strong>{{totalPrice | currency}}</strong></td>
+                <td><strong>{{totalPrice | currency:"€"}}</strong></td>
             </tr>
             </tbody>
         </table>
