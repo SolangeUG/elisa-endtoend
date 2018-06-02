@@ -41,7 +41,7 @@ public class OrderService {
         try {
 
             // make sure order has valid customer information
-            if (order.getCustomer().getCustomerId() <= 0) {
+            if (order.getCustomer() != null && order.getCustomer().getCustomerId() <= 0) {
 
                 // first, look for customer with corresponding company name
                 Customer customer = customerService.getCustomer(order.getCustomer().getCompanyName());
