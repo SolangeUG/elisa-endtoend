@@ -22,7 +22,15 @@ and an action for submitting the order
 
 - [Java SE 8][4]
 - [Maven 3.3+][5]
-- Any IDE that supports JDK 8
+- Any IDE/editor that supports JDK 8
+
+## Setup and Run Instructions
+
+- Download and unzip this `elisa-endtoend` project source code.
+- From a command line window, navigate to the (newly unzipped) project root folder, then run the `mvn clean install` 
+command, (make sure you have sufficient user permissions to install the application).
+- To launch the application, run `java -jar target/endtoend-1.0-SNAPSHOT.jar`.
+- The web application will start and be available at `http://localhost:8080/`.
 
 
 [1]: https://github.com/SolangeUG/elisa-endtoend/blob/master/LICENSE
