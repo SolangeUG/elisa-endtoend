@@ -21,6 +21,9 @@ angular.module('ShopApp.controllers')
          * Load list of products
          */
         $scope.getProducts = function() {
+            //(re)init shared "state"
+            sharedService.reset();
+
             // load list of prices
             appService.getPrices()
                 .then(
