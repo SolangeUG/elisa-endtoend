@@ -1,5 +1,12 @@
 1) How would you rate (1-10) the difficulty level of the test (1 = really easy, 10 = impossible)?
+    I would it give it a 7 difficulty level.
 
-2) Was the timit limit (7,5 hours) ok or too strict?
+2) Was the time limit (7,5 hours) ok or too strict?
+    The time limit would probably be OK for an experienced fullstack developer.
+    As for me, it took me about 20 hours to complete the project.
+    A quite substantial amount of time was spent on research, and learning on how to implement frontend functionalities.
 
 3) Other feedback about the test?
+    Not so much of a feedback, but a question: does Elisa work with the technologies chosen for this project
+    (Jersey, Grizzly, spring-jdbc)?
+    As a final word, I particularly liked this project, for it has exposed me to technologies I wasn't too familiar with.
