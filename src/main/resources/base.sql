@@ -1,5 +1,5 @@
 
-CREATE TABLE customer (
+CREATE TABLE IF NOT EXISTS customer (
   customer_id number(10) not null AUTO_INCREMENT,
   company_name varchar2(50) not null,
   street varchar2(50) not null,
@@ -9,7 +9,7 @@ CREATE TABLE customer (
   CONSTRAINT customer_pk PRIMARY KEY (customer_id)
 );
 
-CREATE TABLE orders (
+CREATE TABLE IF NOT EXISTS orders (
   order_id number(10) not null AUTO_INCREMENT,
   customer_id number(10) not null,
   CONSTRAINT orders_pk PRIMARY KEY (order_id),
@@ -18,7 +18,7 @@ CREATE TABLE orders (
     REFERENCES customer(customer_id)
 );
 
-CREATE TABLE order_line (
+CREATE TABLE IF NOT EXISTS order_line (
   order_line_id number(10) not null AUTO_INCREMENT,
   order_id number(10) not null,
   product_id varchar2(50) not null,
@@ -30,13 +30,13 @@ CREATE TABLE order_line (
     REFERENCES orders(order_id)
 );
 
-CREATE TABLE product_dump (
+CREATE TABLE IF NOT EXISTS product_dump (
   product_group varchar2(30) not null,
   product_json clob not null,
   PRIMARY KEY (product_group)
 );
 
-CREATE TABLE pricing_dump (
+CREATE TABLE IF NOT EXISTS pricing_dump (
   pricing_group varchar2(30) not null,
   price_json clob not null,
   PRIMARY KEY (pricing_group)
