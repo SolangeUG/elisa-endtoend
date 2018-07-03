@@ -27,7 +27,7 @@ public class OrderDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return Collections.EMPTY_LIST;
+        return Collections.emptyList();
     }
 
     private List<OrderLine> findOrderLines(long orderId) {
@@ -43,7 +43,7 @@ public class OrderDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return Collections.EMPTY_LIST;
+        return Collections.emptyList();
     }
 
     public Customer findCustomer(final long customerId) {
