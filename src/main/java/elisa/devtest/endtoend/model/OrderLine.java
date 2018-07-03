@@ -1,6 +1,8 @@
 package elisa.devtest.endtoend.model;
 
-
+/**
+ * A class to represent an order line information
+ */
 public class OrderLine {
     private long orderLineId;
     private String productId;
@@ -12,6 +14,13 @@ public class OrderLine {
      */
     public OrderLine() {}
 
+    /**
+     * Constructor
+     * @param orderLineId order line identifier
+     * @param productId product identifier
+     * @param productName product name
+     * @param quantity quantity
+     */
     public OrderLine(long orderLineId, String productId, String productName, int quantity) {
         this.orderLineId = orderLineId;
         this.productId = productId;
@@ -31,18 +40,34 @@ public class OrderLine {
         this.quantity = quantity;
     }
 
+    /**
+     * Return order line identifier
+     * @return orderLineId
+     */
     public long getOrderLineId() {
         return orderLineId;
     }
 
+    /**
+     * Return product identifier
+     * @return productId
+     */
     public String getProductId() {
         return productId;
     }
 
+    /**
+     * Return name of product
+     * @return productName
+     */
     public String getProductName() {
         return productName;
     }
 
+    /**
+     * Return product quantity
+     * @return quantity
+     */
     public int getQuantity() {
         return quantity;
     }
