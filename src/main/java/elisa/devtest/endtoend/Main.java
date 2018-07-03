@@ -11,9 +11,9 @@ import java.io.IOException;
 import java.net.URI;
 
 public class Main {
-    public static final String BASE_URI = "http://localhost:8080/api/";
+    private static final String BASE_URI = "http://localhost:8080/api/";
 
-    public static HttpServer startServer() {
+    private static HttpServer startServer() {
         return createHttpServerWith(new ResourceConfig().packages("elisa.devtest.endtoend").register(JacksonFeature.class));
     }
 
@@ -34,7 +34,7 @@ public class Main {
                 + "%sapplication.wadl\nHit enter to stop it...", BASE_URI));
         server.start();
         System.in.read();
-        server.stop();
+        server.shutdownNow();
     }
 
 }
