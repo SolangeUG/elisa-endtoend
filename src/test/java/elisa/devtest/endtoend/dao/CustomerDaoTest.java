@@ -1,6 +1,6 @@
 package elisa.devtest.endtoend.dao;
 
-import elisa.devtest.endtoend.DbBootstrap;
+import elisa.devtest.endtoend.util.DbBootstrap;
 import elisa.devtest.endtoend.model.Customer;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;

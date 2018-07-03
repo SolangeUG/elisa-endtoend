@@ -1,5 +1,6 @@
 package elisa.devtest.endtoend;
 
+import elisa.devtest.endtoend.util.DbBootstrap;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.grizzly.http.server.StaticHttpHandler;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;

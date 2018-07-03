@@ -1,7 +1,8 @@
-package elisa.devtest.endtoend;
+package elisa.devtest.endtoend.util;
 
 
 import elisa.devtest.endtoend.dao.DBConnection;
+import elisa.devtest.endtoend.util.PreparedJsonStatement;
 import org.apache.commons.io.IOUtils;
 import org.springframework.jdbc.core.JdbcTemplate;
 

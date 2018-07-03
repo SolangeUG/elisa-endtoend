@@ -1,6 +1,6 @@
 package elisa.devtest.endtoend.dao;
 
-import elisa.devtest.endtoend.DbBootstrap;
+import elisa.devtest.endtoend.util.DbBootstrap;
 import elisa.devtest.endtoend.model.Customer;
 import elisa.devtest.endtoend.model.Order;
 import elisa.devtest.endtoend.model.OrderLine;
