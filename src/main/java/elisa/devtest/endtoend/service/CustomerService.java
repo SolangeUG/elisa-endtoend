@@ -14,7 +14,7 @@ public class CustomerService {
     /**
      * Default no-argument constructor
      */
-    public CustomerService() {}
+    CustomerService() {}
 
     /**
      * Constructor
@@ -29,7 +29,7 @@ public class CustomerService {
      * @param companyName company name
      * @return the corresponding customer
      */
-    public Customer getCustomer(String companyName) {
+    Customer getCustomer(String companyName) {
         return customerDao.find(companyName);
     }
 
@@ -38,7 +38,7 @@ public class CustomerService {
      * @param customerId customer id
      * @return the corresponding customer
      */
-    public Customer getCustomer(long customerId) {
+    Customer getCustomer(long customerId) {
         return customerDao.find(customerId);
     }
 
@@ -47,7 +47,7 @@ public class CustomerService {
      * @param customer customer to save
      * @return newly saved customer
      */
-    public Customer saveCustomer(Customer customer) {
+    Customer saveCustomer(Customer customer) {
         long resultId = customerDao.save(customer);
         return customerDao.find(resultId);
     }
