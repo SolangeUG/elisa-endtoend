@@ -1,6 +1,7 @@
-package elisa.devtest.endtoend;
+package elisa.devtest.endtoend.resource;
 
 import elisa.devtest.endtoend.model.Order;
+import elisa.devtest.endtoend.resource.OrderResource;
 import elisa.devtest.endtoend.service.OrderService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

@@ -1,4 +1,4 @@
-package elisa.devtest.endtoend;
+package elisa.devtest.endtoend.resource;
 
 import elisa.devtest.endtoend.model.Price;
 import elisa.devtest.endtoend.service.PricingService;

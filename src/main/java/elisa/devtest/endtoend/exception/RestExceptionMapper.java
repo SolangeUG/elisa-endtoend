@@ -1,4 +1,4 @@
-package elisa.devtest.endtoend;
+package elisa.devtest.endtoend.exception;
 
 
 import javax.ws.rs.WebApplicationException;
