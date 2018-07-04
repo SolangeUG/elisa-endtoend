@@ -14,8 +14,15 @@ import java.sql.SQLException;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Order Data Access Object
+ */
 public class OrderDao {
 
+    /**
+     * Return the list of all orders
+     * @return orders
+     */
     public List<Order> findOrders() {
         try {
             return createJdbcTemplate()
@@ -44,28 +51,6 @@ public class OrderDao {
             e.printStackTrace();
         }
         return Collections.emptyList();
-    }
-
-    public Customer findCustomer(final long customerId) {
-        try {
-            return createJdbcTemplate()
-                    .queryForObject("select * from customer where customer_id = ?",
-                                    new Object[]{customerId},
-                                    (resultSet, rowNumber) -> new Customer(resultSet.getLong("customer_id"),
-                                                                            resultSet.getString("company_name"),
-                                                                            resultSet.getString("street"),
-                                                                            resultSet.getString("postal_code"),
-                                                                            resultSet.getString("city"),
-                                                                            resultSet.getString("country"))
-                    );
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return new Customer();
-    }
-
-    private JdbcTemplate createJdbcTemplate() {
-        return new JdbcTemplate(DBConnection.getDataSource());
     }
 
 
@@ -131,6 +116,37 @@ public class OrderDao {
                                                             findCustomer(resultSet.getLong("customer_id")),
                                                             findOrderLines(resultSet.getLong("order_id")))
                 );
+    }
+
+    /**
+     * Return a customer with given indentifier
+     * @param customerId customer identifier
+     * @return customer
+     */
+    private Customer findCustomer(final long customerId) {
+        try {
+            return createJdbcTemplate()
+                    .queryForObject("select * from customer where customer_id = ?",
+                            new Object[]{customerId},
+                            (resultSet, rowNumber) -> new Customer(resultSet.getLong("customer_id"),
+                                    resultSet.getString("company_name"),
+                                    resultSet.getString("street"),
+                                    resultSet.getString("postal_code"),
+                                    resultSet.getString("city"),
+                                    resultSet.getString("country"))
+                    );
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new Customer();
+    }
+
+    /**
+     * Return a JDBC template for a given datasource
+     * @return JdbcTemplate
+     */
+    private JdbcTemplate createJdbcTemplate() {
+        return new JdbcTemplate(DBConnection.getDataSource());
     }
 
 }
