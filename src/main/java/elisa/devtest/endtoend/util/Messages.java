@@ -35,4 +35,7 @@ public abstract class Messages {
 
     public static final String JSON_PARSING_EXCEPTION =
             messages.getString("exception.parsing.json");
+
+    public static final String REST_PROCESSING_EXCEPTION =
+            messages.getString("exception.rest.process");
 }
