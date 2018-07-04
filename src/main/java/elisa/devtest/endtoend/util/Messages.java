@@ -32,4 +32,7 @@ public abstract class Messages {
 
     public static final String CUSTOMER_SAVING_EXCEPTION =
             messages.getString("exception.customer.save");
+
+    public static final String JSON_PARSING_EXCEPTION =
+            messages.getString("exception.parsing.json");
 }
