@@ -12,6 +12,9 @@ public abstract class Messages {
     private static ResourceBundle messages =
             ResourceBundle.getBundle("messages", Locale.getDefault());
 
+    public static final String DATASOURCE_CONNECTION_EXCEPTION =
+            messages.getString("exception.datasource.connection");
+
     public static final String ORDER_PROCESSING_EXCEPTION =
             messages.getString("exception.order.process");
 
