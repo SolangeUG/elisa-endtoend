@@ -9,9 +9,16 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.Collection;
 
+/**
+ * Prices REST API controller
+ */
 @Path("/prices")
 public class PricingResource {
 
+    /**
+     * Return all available prices
+     * @return collection of prices
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Collection<Price> findPrices() {
