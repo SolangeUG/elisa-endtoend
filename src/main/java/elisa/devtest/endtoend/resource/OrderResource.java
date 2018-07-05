@@ -9,11 +9,18 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Collection;
 
+/**
+ * Orders REST API controller
+ */
 @Path("/orders")
 public class OrderResource {
 
     private OrderService orderService = new OrderService();
 
+    /**
+     * Return available orders
+     * @return list of orders
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Collection<Order> getOrders() {
@@ -21,6 +28,12 @@ public class OrderResource {
         return orderService.getOrders();
     }
 
+    /**
+     * Create a new order
+     * @param order order to be created
+     * @return newly created resource
+     * @throws ServerErrorException in case of an error processing the request
+     */
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
