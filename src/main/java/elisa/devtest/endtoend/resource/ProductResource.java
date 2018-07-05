@@ -9,8 +9,16 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.Collection;
 
+/**
+ * Products REST API controller
+ */
 @Path("/products")
 public class ProductResource {
+
+    /**
+     * Return all available products
+     * @return collection of products
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Collection<Product> getProducts() {
