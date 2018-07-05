@@ -12,19 +12,29 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Service class for processing price related operations
+ */
 public class ProductService {
     private final ProductDao productDao = new ProductDao();
-    final ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
+    /**
+     * Return all products
+     * @return list of products
+     */
     public List<Product> findProducts() {
         List<Product> products = new ArrayList<>();
         List<ProductDto> productDtos = productDao.findProducts();
-        productDtos.stream().forEach(productDto ->
-                mapAsProducts(productDto).stream()
-                        .forEach(product -> products.add(product)));
+        productDtos.forEach(productDto -> products.addAll(mapAsProducts(productDto)));
         return products;
     }
 
+    /**
+     * Map a product data transfer object to a list of prices
+     * @param productDto product data transfer object
+     * @return corresponding list of products
+     */
     private List<Product> mapAsProducts(ProductDto productDto)  {
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         try {
