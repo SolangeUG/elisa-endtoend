@@ -15,6 +15,9 @@ public abstract class Messages {
     public static final String DATASOURCE_CONNECTION_EXCEPTION =
             messages.getString("exception.datasource.connection");
 
+    static final String DATASOURCE_JSON_INSERTION_EXCEPTION =
+            messages.getString("exception.datasource.json.insertion");
+
     public static final String ORDER_PROCESSING_EXCEPTION =
             messages.getString("exception.order.process");
 
