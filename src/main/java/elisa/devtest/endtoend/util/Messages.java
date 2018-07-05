@@ -38,4 +38,7 @@ public abstract class Messages {
 
     public static final String REST_PROCESSING_EXCEPTION =
             messages.getString("exception.rest.process");
+
+    public static final String REST_ECHO_RESOURCE_GET_MESSAGE =
+            messages.getString("rest.echo.resource.get");
 }
