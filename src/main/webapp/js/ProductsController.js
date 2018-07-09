@@ -75,11 +75,7 @@ angular.module('ShopApp.controllers')
                 $scope.selected.counter -= 1;
             }
 
-            if ($scope.selected.counter > 0) {
-                $scope.selected.value = true;
-            } else {
-                $scope.selected.value = false;
-            }
+            $scope.selected.value = $scope.selected.counter > 0;
         };
 
         /**
