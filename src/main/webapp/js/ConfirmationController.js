@@ -18,4 +18,4 @@ angular.module('ShopApp.controllers')
             $scope.totalPrice = sharedService.getTotalPrice();
             $scope.customer = sharedService.getCustomer();
         }
-    })
+    });
