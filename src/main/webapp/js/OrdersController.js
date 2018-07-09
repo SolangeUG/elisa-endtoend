@@ -21,7 +21,7 @@ angular.module('ShopApp.controllers')
 
             // in case tno product has previously been selected
             if (products.length === 0) {
-                $scope.error.message = "No products selected!"
+                $scope.error.message = "No products selected!";
                 $scope.error.value = true;
                 return;
             }
@@ -42,7 +42,7 @@ angular.module('ShopApp.controllers')
                     quantity: product.quantity,
                     unitPrice: product.price.recurringPrice,
                     price: orderLine.price
-                }
+                };
                 sharedService.addOrderLine(newOrderLine);
 
                 // update order total price
@@ -72,7 +72,7 @@ angular.module('ShopApp.controllers')
             // send order to backend
             appService.createOrder($scope.order)
                 .then(
-                    function(response) {
+                    function() {
                         $location.path("/confirmation");
                     },
                     function(error) {
