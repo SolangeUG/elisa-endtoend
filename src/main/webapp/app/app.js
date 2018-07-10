@@ -11,15 +11,15 @@ angular.module('ShopApp', [
 .config(['$routeProvider', function($routeProvider) {
     $routeProvider
         .when('/', {
-            templateUrl: "partials/products.html",
+            templateUrl: "components/products/products.html",
             controller: "ProductsController"
         })
         .when('/order', {
-            templateUrl: "partials/orders.html",
+            templateUrl: "components/orders/orders.html",
             controller: "OrdersController"
         })
         .when('/confirmation', {
-            templateUrl: "partials/confirmation.html",
+            templateUrl: "components/orders/confirmation.html",
             controller: "ConfirmationController"
         })
         .otherwise({
